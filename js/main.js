@@ -3,7 +3,16 @@ $(function (){
 
     $('#checkAnagramm').on("click", function() {
        
-        checkAnagramm();
+        if( $('#firstWord').val() != '' || $('#secondWord').val() != ''){
+
+            checkAnagramm();
+
+        } else {
+
+            console.log('Input Empty!');
+
+        }
+        
     });
 
 });
@@ -22,9 +31,13 @@ function checkAnagramm() {
     console.log('First Word Sorted: ' + word1Sorted + '\nSecond Word Sorted: ' + word2Sorted);
 
     if (word1Sorted == word2Sorted) {
+
         console.log('Anagramm');
+
     } else {
+
         console.log('Not Anagramm');
+        
     }
 
 }
