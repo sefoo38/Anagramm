@@ -1,7 +1,22 @@
 $(function (){
     console.log("Document Ready");
 
-    $('#checkAnagramm').on("click", function() {
+    if (localStorage.getItem('darkmode') == 'true' ) {
+
+        applyDarkMode();
+
+        $('#checkboxDarkmode').prop('checked', true);
+    };
+
+    $('#checkboxDarkmode').on('change', function() {
+
+        console.log('Darkmode changed');
+
+        changeDarkmode();
+
+    });
+
+    $('#checkAnagramm').on('click', function() {
        
         if( $('#firstWord').val() != '' || $('#secondWord').val() != ''){
 
@@ -9,7 +24,7 @@ $(function (){
 
         } else {
 
-            console.log('Input Empty!');
+            console.log('Input is Empty');
 
         }
         
@@ -17,7 +32,7 @@ $(function (){
 
 });
 
-// First Version 
+
 
 function checkAnagramm() {
     let word1 = $('#firstWord').val();
@@ -34,10 +49,63 @@ function checkAnagramm() {
 
         console.log('Anagramm');
 
+        getJoke();
+
     } else {
 
         console.log('Not Anagramm');
-        
+
     }
+
+}
+
+function getJoke() {
+    fetch("https://uselessfacts.jsph.pl/random.json?language=de")
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data.text);
+
+        M.toast({html: 'Fun Fact: ' + data.text, classes: 'rounded', displayLength: 5000});
+
+    });
+}
+
+function showToast(){
+
+}
+
+
+function changeDarkmode() {
+
+    if($('#checkboxDarkmode').prop('checked')) {
+
+        console.log('Darkmode is checked');
+
+        applyDarkMode();
+
+    }else{
+
+        console.log('Darkmode is not checked');
+
+        $('body').addClass('bodyLightmode');
+        $('body').removeClass('bodyDarkmode');
+
+        $('#card').removeClass('cardDarkmode');
+
+        localStorage.setItem('darkmode', false);
+
+    }
+
+}
+
+function applyDarkMode(){
+
+    $('body').addClass('bodyDarkmode');
+    $('body').removeClass('bodyLightmode');
+
+    $('#card').addClass('cardDarkmode');
+
+    localStorage.setItem('darkmode', true);
 
 }
