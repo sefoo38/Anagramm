@@ -11,6 +11,8 @@
 
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Import custom style.css-->
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
     <!--jQuery-->
@@ -20,22 +22,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body class="bodyLightmode">
 
     <div class="container">
 
+        <div class="switch">
+            <label>
+                <i class="tiny material-icons">wb_sunny</i>
+                <input type="checkbox" id="checkboxDarkmode">
+                <span class="lever"></span>
+                <i class="tiny material-icons">brightness_3</i>
+            </label>
+          </div>
+
         <div class="row mainRow">
             <div class="col s8">
-                <div class="card">
+                <div class="card" id="card">
                     <div class="card-content white-text">
-                        <span class="card-title">Anagramm Checker</span>
+                        <span class="card-title">Anagramm-Checker</span>
 
                         <div class="row">
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="firstWord" type="text" class="validate">
-                                        <label for="firstWord">Dein erstes Wort</label>
+                                        <label for="firstWord">Erstes Wort</label>
                                     </div>
                                 </div>
                             </form>
@@ -46,7 +57,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="secondWord" type="text" class="validate">
-                                        <label for="secondWord">Dein zweites Wort</label>
+                                        <label for="secondWord">Zweites Wort</label>
                                     </div>
                                 </div>
                             </form>
